@@ -1,6 +1,6 @@
 # assign port explicitly for social-client application
 server:
-  port: 9092
+  port: 9093
 
 # Define the Eureka server that handles service registration
 eureka:
