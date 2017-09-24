@@ -12,8 +12,6 @@ spring:
   ldap:
     embedded:
       ldif: classpath:schema.ldif
-  application:
-    name: uaa-server
 
 
 # Define the port where the UAA server would be running
