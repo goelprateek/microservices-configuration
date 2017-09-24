@@ -28,6 +28,18 @@ zuul:
       path: /social/**
       service-id: social-client
       strip-prefix: true
+    card-statement: 
+      path: /card-statement/** 
+      service-id: card-statement
+      strip-prefix: true
+    statement-service:
+      path: /statement-service/**
+      service-id: statement-service
+      strip-prefix: true
+    creditcard-service:
+      path: /creditcard-service/**
+      service-id: creditcard-service
+      strip-prefix: true
   add-proxy-headers: true
 
 security:
