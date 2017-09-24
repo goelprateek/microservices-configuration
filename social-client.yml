@@ -1,0 +1,54 @@
+# assign port explicitly for social-client application
+server:
+  port: 9092
+
+# Define the Eureka server that handles service registration
+eureka:
+  instance:
+      hostname: localhost
+      port: 8761
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+
+
+facebook:
+  client:
+    client-id: 1734705486834277
+    clienclient-secret: 3a18bd78907b536db43ddc4e3b9a74e9
+    access-token-uri: https://graph.facebook.com/oauth/access_token
+    user-authorization-uri: https://www.facebook.com/dialog/oauth
+    token-name: oauth_token
+    authentication-scheme: query
+    client-authentication-scheme: form
+  resource:
+    user-info-uri: https://graph.facebook.com/me
+github:
+  client:
+    client-id: 04da230bba059d31177a
+    client-secret: 4268466f8fc932181477e3b0035c40d63f31c4c9
+    access-token-uri: https://github.com/login/oauth/access_token
+    user-authorization-uri: https://github.com/login/oauth/authorize
+    authentication-scheme: form
+  resource:
+    user-info-uri: https://api.github.com/user
+google:
+  client:
+    client-id: 761163646116-7tmhgp0g5kf1vttpdq7vi59i17rebv4q.apps.googleusercontent.com
+    client-secret: z4tsBIPIBxg8_BP1hhCxIlnu
+    accessTokenUri: https://www.googleapis.com/oauth2/v3/token
+    userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
+    authenticationScheme: query
+    scope:
+      - email
+      - profile
+    resource:
+      user-info-uri:
+  resource:
+    user-info-uri: https://www.googleapis.com/oauth2/v2/userinfo
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+
