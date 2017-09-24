@@ -1,0 +1,54 @@
+# Define the port where the API gateway server would be running
+server:
+  port: 8080
+
+# Define the Eureka server that handles service registration
+eureka:
+  instance:
+      hostname: localhost
+      port: 8761
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+
+zuul:
+  routes:
+    resource-server:
+      path: /resource/**
+    uaa-server:
+      sensitiveHeaders:
+      path: /uaa/**
+      stripPrefix: false
+    social-client:
+      path: /social/**
+  add-proxy-headers: true
+
+security:
+  # Disable Spring Boot basic authentication
+  basic:
+    enabled: false
+  oauth2:
+    sso:
+      loginPath: /login
+    client:
+      accessTokenUri: http://localhost:9091/uaa/oauth/token
+      userAuthorizationUri: /uaa/oauth/authorize
+      clientId: uiapplication
+      clientSecret: secret
+    resource:
+      jwt:
+        keyValue: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAn2ZWHYw724KeMucwgoga
+          SiqOunCFSUaqYdZUmHxEqxQmey+ezJ20PHzl+YIJrns/cNPM1Nqsy6ZT5MUbGgkf
+          t+1bOSLZo4ywfk3nWeMfWt2MDfTgxmIZTHeF/WWViz00uzcHfXSoW5U4Afs2fqFB
+          gDoiS/w6lxTi/nE+FeSLT8VajSqRoudXHi5HitnrNt+Rqf78MuezWJvhiqO/88Ac
+          lAJ0Qheon15zvmjJgNBg2Mpy+ab4GgcU1mezZYUl8fwfup8Y6fhCZkvFDFMl2h8O
+          5d8TDl4ssjwjMQqQgcVKhy5HvA9AUcOP0wc+G46VN4F9771cBWc/60oCzUqRVa1b
+          RQIDAQAB
+          -----END PUBLIC KEY-----
+      id: openid
+      serviceId: ${PREFIX:}resource
+
+logging:
+  level.org.springframework.security: DEBUG
