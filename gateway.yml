@@ -19,7 +19,7 @@ zuul:
       path: /resource/**
       service-id: resource-server
       strip-prefix: true
-    uaa-server:
+    auth-server:
       sensitiveHeaders:
       path: /uaa/**
       service-id: auth-server
