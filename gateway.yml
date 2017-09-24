@@ -12,15 +12,22 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
 
 zuul:
+  debug: 
+    request: true
   routes:
     resource-server:
       path: /resource/**
+      service-id: resource-server
+      strip-prefix: true
     uaa-server:
       sensitiveHeaders:
       path: /uaa/**
+      service-id: auth-server
       stripPrefix: false
     social-client:
       path: /social/**
+      service-id: social-client
+      strip-prefix: true
   add-proxy-headers: true
 
 security:
