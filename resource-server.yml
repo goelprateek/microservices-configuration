@@ -1,6 +1,9 @@
 server:
   port: 8081
 
+app:
+  test: test value
+
 eureka:
   instance:
     hostname: localhost
