@@ -50,7 +50,7 @@ security:
     sso:
       loginPath: /login
     client:
-            accessTokenUri: http://localhost:9091/uaa/oauth/token
+      accessTokenUri: http://localhost:9091/uaa/oauth/token
       userAuthorizationUri: /uaa/oauth/authorize
       clientId: uiapplication
       clientSecret: secret
