@@ -5,15 +5,41 @@ server:
 # Define the Eureka server that handles service registration
 eureka:
   instance:
-      hostname: localhost
+      appname: gateway
+      instanceId: zuulproxy:${spring.application.instance-id:${random.value}}
       port: 8761
+      lease-renewal-interval-in-seconds: 5
+      lease-expiration-duration-in-seconds: 10
+      status-page-url-path: ${management.context-path}/info
+      health-check-url-path: ${management.context-path}/health
+      metadata-map:
+        zone: primary # This is needed for the load balancer
+        profile: ${spring.profiles.active}
+        version: ${info.project.version}
   client:
+    enabled: true
+    healthcheck:
+        enabled: true
+    fetch-registry: true
+    instance-info-replication-interval-seconds: 10
+    registry-fetch-interval-seconds: 10
+    registerWithEureka: true
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
 
-zuul:
+ribbon:
+  eureka:
+    enabled: true
+
+# See http://cloud.spring.io/spring-cloud-netflix/spring-cloud-netflix.html
+zuul: # those values must be configured depending on the application specific needs
   debug: 
     request: true
+  host: 
+    max-total-connections: 1000
+    max-per-route-connections: 100
+  semaphore: 
+    max-semaphores: 500
   routes:
     resource-server:
       path: /resource/**
@@ -42,6 +68,19 @@ zuul:
       strip-prefix: true
   add-proxy-headers: true
 
+# See https://github.com/Netflix/Hystrix/wiki/Configuration
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+management:
+  security: 
+    context-path: /management
+
 security:
   # Disable Spring Boot basic authentication
   basic:
@@ -68,6 +107,10 @@ security:
           -----END PUBLIC KEY-----
       id: openid
       serviceId: ${PREFIX:}resource
+
+info:
+  project:
+    version: 1.0.0  
 
 logging:
   level.org.springframework.security: DEBUG
