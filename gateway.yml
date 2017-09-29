@@ -10,8 +10,6 @@ eureka:
       port: 8761
       lease-renewal-interval-in-seconds: 5
       lease-expiration-duration-in-seconds: 10
-      status-page-url-path: ${management.context-path}/info
-      health-check-url-path: ${management.context-path}/health
       metadata-map:
         zone: primary # This is needed for the load balancer
         profile: ${spring.profiles.active}
@@ -71,10 +69,6 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 10000
-
-management:
-  security: 
-    context-path: /management
 
 security:
   # Disable Spring Boot basic authentication
