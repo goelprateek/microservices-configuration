@@ -16,8 +16,6 @@ eureka:
         version: ${info.project.version}
   client:
     enabled: true
-    healthcheck:
-        enabled: true
     fetch-registry: true
     instance-info-replication-interval-seconds: 10
     registry-fetch-interval-seconds: 10
