@@ -35,11 +35,6 @@ ribbon:
 zuul: # those values must be configured depending on the application specific needs
   debug: 
     request: true
-  host: 
-    max-total-connections: 1000
-    max-per-route-connections: 100
-  semaphore: 
-    max-semaphores: 500
   routes:
     resource-server:
       path: /resource/**
