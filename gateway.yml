@@ -6,7 +6,7 @@ server:
 eureka:
   instance:
       appname: gateway
-      instanceId: zuulproxy:${spring.application.instance-id:${random.value}}
+      instanceId: gateway:${spring.application.instance-id:${random.value}}
       hostname: localhost
       port: 8761
       lease-renewal-interval-in-seconds: 5
