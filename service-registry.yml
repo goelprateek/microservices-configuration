@@ -1,10 +1,19 @@
+
+info:
+  project:
+    version: 1.0.0
+
 server:
-  port: 8761
+  port: 7071
 
 eureka:
   instance:
+    appname: service-registry
+    instanceId: service-registry:${spring.application.instance-id:${random.value}}
     hostname: localhost
     port: ${server.port}
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
   client:
     registerWithEureka: false
     fetchRegistry: false
