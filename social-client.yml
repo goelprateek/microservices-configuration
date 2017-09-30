@@ -12,7 +12,7 @@ eureka:
     appname: social-client
     instanceId: social-client:${spring.application.instance-id:${random.value}}
     hostname: localhost
-    port: 7071
+    port: 8761
     lease-renewal-interval-in-seconds: 5
     lease-expiration-duration-in-seconds: 10
     metadata-map:
