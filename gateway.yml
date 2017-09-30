@@ -100,5 +100,13 @@ info:
   project:
     version: 1.0.0  
 
+spring:
+  zipkin:
+    base-url: ${ZIPKIN_BASE_URL:localhost:9411}
+    enabled: true
+    locator:
+      discovery:
+        enabled: true
+
 logging:
   level.org.springframework.security: DEBUG
