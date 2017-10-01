@@ -3,6 +3,7 @@ info:
   project:
     version: 1.0.0 
 
+
 security:
   basic:
     enabled: false
