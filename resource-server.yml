@@ -6,7 +6,7 @@ server:
   port: 7075
 
 test:
-  key: prateek
+  key: sayali
 
 eureka:
   instance:
