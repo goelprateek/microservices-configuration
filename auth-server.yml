@@ -61,6 +61,15 @@ hystrix:
           thread:
             timeoutInMilliseconds: 10000
 
+
+spring:
+  zipkin:
+    base-url: ${ZIPKIN_BASE_URL:http://localhost:7073}
+    enabled: true
+    locator:
+      discovery:
+        enabled: true
+
 logging:
   level:
     com.softcell.gonogo.*: DEBUG
