@@ -46,7 +46,7 @@ hystrix:
 
 spring:
   zipkin:
-    base-url: ${ZIPKIN_BASE_URL:localhost:7073}
+    base-url: ${ZIPKIN_BASE_URL:http://localhost:7073}
     enabled: true
     locator:
       discovery:
