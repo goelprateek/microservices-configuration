@@ -3,7 +3,6 @@ info:
   project:
     version: 1.0.0 
 
-
 security:
   basic:
     enabled: false
@@ -15,6 +14,12 @@ spring:
   data:
     mongodb:
       uri: ${UAA_MONGO_URL:mongodb://localhost:27017/uam}
+  zipkin:
+    base-url: ${ZIPKIN_BASE_URL:http://localhost:7073}
+    enabled: true
+    locator:
+      discovery:
+        enabled: true
   ldap:
     embedded:
       ldif: classpath:schema.ldif
@@ -61,14 +66,7 @@ hystrix:
           thread:
             timeoutInMilliseconds: 10000
 
-
-spring:
-  zipkin:
-    base-url: ${ZIPKIN_BASE_URL:http://localhost:7073}
-    enabled: true
-    locator:
-      discovery:
-        enabled: true
+  
 
 logging:
   level:
