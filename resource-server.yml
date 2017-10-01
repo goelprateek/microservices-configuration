@@ -5,6 +5,9 @@ info:
 server:
   port: 7075
 
+test:
+  key: prateek-event-bus-test
+
 eureka:
   instance:
     appname: resource-server
