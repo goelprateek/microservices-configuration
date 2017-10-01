@@ -71,6 +71,3 @@ gng:
     jwt:
       pass: mySecretKey
 
-info:
-  project:
-    version: 1.0.0 
