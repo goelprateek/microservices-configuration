@@ -6,7 +6,7 @@ server:
   port: 7075
 
 test:
-  key: prateek-event-bus-test
+  key: prateek
 
 eureka:
   instance:
