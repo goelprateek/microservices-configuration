@@ -29,8 +29,8 @@ server:
 
 eureka:
   instance:
-    appname: creditcard-service
-    instanceId: creditcard-service:${spring.application.instance-id:${random.value}}
+    appname: auth-server
+    instanceId: auth-server:${spring.application.instance-id:${random.value}}
     hostname: localhost
     port: 7071
     lease-renewal-interval-in-seconds: 5
