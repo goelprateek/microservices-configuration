@@ -73,8 +73,5 @@ logging:
     com.softcell.gonogo.*: DEBUG
 
 
-gng:
-  security:
-    jwt:
-      pass: mySecretKey
+
 
