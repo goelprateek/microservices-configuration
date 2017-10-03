@@ -89,6 +89,8 @@ spring:
         enabled: true
   cloud:
     consul:
+      host: localhost
+      port: 8500
       discovery:
         tags: profile=${spring.profiles.active}, version=${info.project.version}
       config:
