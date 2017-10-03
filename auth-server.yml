@@ -11,6 +11,8 @@ security:
   ignored: /css/**,/js/**,/favicon.ico,/webjars/**
 
 spring:
+  message:
+    basen
   data:
     mongodb:
       uri: ${UAA_MONGO_URL:mongodb://localhost:27017/uam}
