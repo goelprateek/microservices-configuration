@@ -87,17 +87,7 @@ spring:
     locator:
       discovery:
         enabled: true
-  cloud:
-    consul:
-      host: localhost
-      port: 8500
-      discovery:
-        healthCheckPath: /management/health
-        instanceId: ${spring.application.name}:${spring.application.instance-id:${random.value}}
-      config:
-        fail-fast: false # if not in "prod" profile, do not force to use Spring Cloud Config
-        format: yaml
-        profile-separator: "-"
+  
 
 logging:
   level.org.springframework.security: DEBUG
