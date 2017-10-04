@@ -92,7 +92,8 @@ spring:
       host: localhost
       port: 8500
       discovery:
-        tags: profile=${spring.profiles.active}, version=${info.project.version}
+        healthCheckPath: /management/health
+        instanceId: ${spring.application.name}:${spring.application.instance-id:${random.value}}
       config:
         fail-fast: false # if not in "prod" profile, do not force to use Spring Cloud Config
         format: yaml
