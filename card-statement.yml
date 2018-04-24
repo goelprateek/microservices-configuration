@@ -8,7 +8,6 @@ server:
 
 
 # Define the Eureka server that handles service registration
-# Define the Eureka server that handles service registration
 eureka:
   instance:
     appname: card-statement

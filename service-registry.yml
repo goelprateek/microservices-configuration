@@ -3,8 +3,6 @@ info:
   project:
     version: 1.0.0
 
-server:
-  port: 7071
 
 eureka:
   instance:
