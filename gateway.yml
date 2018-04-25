@@ -10,10 +10,10 @@ server:
 # Define the Eureka server that handles service registration
 eureka:
   instance:
-    appname: gateway
-    instanceId: gateway:${spring.application.instance-id:${random.value}}
-    hostname: localhost
-    port: 7071
+    appname: auth-server
+    instanceId: auth-server:${spring.application.instance-id:${random.value}}
+    hostname: ${EUREKA_ADVERTISE_HOST:localhost}
+    port: ${EUREKA_ADVERTISE_PORT:7071}
     lease-renewal-interval-in-seconds: 5
     lease-expiration-duration-in-seconds: 10
     metadata-map:
