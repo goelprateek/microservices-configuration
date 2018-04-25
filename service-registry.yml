@@ -4,17 +4,3 @@ info:
     version: 1.0.0
 
 
-eureka:
-  instance:
-    appname: service-registry
-    instanceId: service-registry:${spring.application.instance-id:${random.value}}
-    hostname: localhost
-    port: ${server.port}
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-  server:
-    waitTimeInMsWhenSyncEmpty: 0
-    

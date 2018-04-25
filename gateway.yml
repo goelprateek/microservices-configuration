@@ -3,12 +3,6 @@ info:
   project:
     version: 1.0.0 
 
-# Define the port where the API gateway server would be running
-server:
-  port: 8080
-
-
-
 ribbon:
   eureka:
     enabled: true
