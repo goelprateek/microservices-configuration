@@ -1,28 +1,7 @@
-# Define the port where the API gateway server would be running
-server:
-  port: 8080
 
-# Define the Eureka server that handles service registration
-eureka:
-  instance:
-      appname: gateway
-      instanceId: gateway:${spring.application.instance-id:${random.value}}
-      hostname: localhost
-      port: 8761
-      lease-renewal-interval-in-seconds: 5
-      lease-expiration-duration-in-seconds: 10
-      metadata-map:
-        zone: primary # This is needed for the load balancer
-        profile: ${spring.profiles.active}
-        version: ${info.project.version}
-  client:
-    enabled: true
-    fetch-registry: true
-    instance-info-replication-interval-seconds: 10
-    registry-fetch-interval-seconds: 10
-    registerWithEureka: true
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+info:
+  project:
+    version: 1.0.0 
 
 ribbon:
   eureka:
@@ -77,7 +56,7 @@ security:
     sso:
       loginPath: /login
     client:
-      accessTokenUri: http://localhost:9091/uaa/oauth/token
+      accessTokenUri: http://auth-server/uaa/oauth/token
       userAuthorizationUri: /uaa/oauth/authorize
       clientId: uiapplication
       clientSecret: secret
@@ -96,9 +75,14 @@ security:
       id: openid
       serviceId: ${PREFIX:}resource
 
-info:
-  project:
-    version: 1.0.0  
+
+spring:
+  zipkin:
+    base-url: ${ZIPKIN_BASE_URL:http://localhost:7073}
+    enabled: true
+    locator:
+      discovery:
+        enabled: true
 
 logging:
   level.org.springframework.security: DEBUG
